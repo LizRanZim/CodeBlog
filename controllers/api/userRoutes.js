@@ -3,12 +3,15 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// Endpoint for /api/users
+
+
 // Get route returns all users
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
             attributes: { exclude: ['password'] },
-            order: [['user_name', 'ASC']],
+            order: [['id', 'ASC']],
         });
 
         res.status(200).json(users);
