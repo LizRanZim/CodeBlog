@@ -1,0 +1,28 @@
+Get to site, show home page
+    Homepage has: Topbar has these links Home Dashboard Login, which switches to Logout when logged in
+    If you try to click anything you get to login/signup page
+    It shows a label of the page you are on, eg Home, Dashboard, Login
+    Homepage shows: seeded posts
+
+
+Login page
+    Create username and password
+    User creds saved and I am logged in
+
+Post page
+    Clicking an existing post I see title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+
+    I can enter a comment and click on the submit button while signed in
+    The comment is saved and the post is updated to display the comment, the comment creator's username, and the date created
+
+Dashboard page
+    See existing posts created by user: From the dashboard I see any blog posts I have created and I can create a new blog post
+    Create a new post I enter title and contents
+
+After submiting, I see an updated dashboard with my new posts
+
+When I click on one of my posts in the dashboard I can delete or update my post and then go back to an updated dashboard
+
+
+
+
