@@ -43,7 +43,9 @@ router.get('/', async (req, res) => {
 
 // Route to display login/signup page  (does not need withAuth)
 
-
+router.get('/login', (req, res) => {
+  res.render('login');
+});
 
 
 
