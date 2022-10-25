@@ -40,4 +40,17 @@ router.post('/', async (req, res) => {
 //     }
 // });
 
+//  Display all comments
+router.get('/', async (req, res) => {
+  try {
+      const comments = await Comment.findAll({
+         order: [['id', 'ASC']],
+      });
+
+      res.status(200).json(comments);
+  } catch (err) {
+      res.status(501).json(err);
+  }
+});
+
 module.exports = router;

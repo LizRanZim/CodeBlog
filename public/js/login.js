@@ -11,75 +11,21 @@ const loginFormHandler = async (event) => {
 
   if (email && password) {
     // Sends login data to data to the back end to attempt to login
-    const response = await fetch('/login', {
+    
+    const response = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      const response = await fetch('api/posts/',
-      // double check route above, goal is to show posts
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to update posts');
-      }
+      document.location.replace('/');
     } else {
       alert('Failed to log in');
     }
-  }
+}
 };
 
-const signupFormHandler = async (event) => {
-  event.preventDefault();
-
-  const user_name = document.querySelector('#name-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
-
-  if (user_name && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ user_name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      if (email && password) {
-        // Sends login data to data to the back end to attempt to login
-        const response = await fetch('/login', {
-          method: 'POST',
-          body: JSON.stringify({ email, password }),
-          headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (response.ok) {
-          const response = await fetch('api/posts/',
-           // double check route above, goal is to show posts
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-          });
-          if (response.ok) {
-            document.location.replace('/dashboard');
-            // double check above, goal is to show dashboard
-          } else {
-            alert('Failed to update items');
-          }
-        } else {
-          alert('Failed to log in');
-        }
-      }
-    } else {
-      alert('Failed to sign up.');
-    }
-  }
-};
 
 
 
@@ -87,6 +33,3 @@ document
   .querySelector('#login-btn')
   .addEventListener('click', loginFormHandler);
 
-document
-  .querySelector('#signup-btn')
-  .addEventListener('click', signupFormHandler);
