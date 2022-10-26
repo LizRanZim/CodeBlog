@@ -1,6 +1,6 @@
 const addPostButtonHandler = async (event) => {
     event.preventDefault();
-    document.location.replace('/all/posts');
+    document.location.replace('/posts/all');
 };
 
 document

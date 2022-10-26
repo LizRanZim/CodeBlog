@@ -8,13 +8,13 @@
     <h6>Post Created on {{format_date onePost.post_date_created}}</h6>
     <h6>Post Id: {{onePost.id}}</h6>
 
-    {{#each onePost.comments as |blogComment| }}
+    {{!-- {{#each onePost.comments as |blogComment| }}
     <div class="row align-center mb-5">
       <div class="col-md-9">
 
         <h3>{{onePost.post_name}}</h3>
         <p>{{onePost.post_description}}</p>
-        <h5>Written by {{onePost.user.name}}</h5>
+        <h5>Written by {{onePost.user_name}}</h5>
         <h6>Post Created on {{format_date onePost.post_date_created}}</h6>
         <h6>Post Id: {{onePost.id}}</h6>
         {{/each}}
@@ -28,7 +28,7 @@
             <h6>Comment created on {{format_date blogComment.comment_date_created}}</h6>
           </div>
         </div>
-        {{/each}}
+        {{/each}} --}}
 
 
 

@@ -75,24 +75,21 @@ router.get('/posts/:id', async (req, res) => {
 
 
 // Route to display dashboard (needs with withAuth)
+
+// how do i pull posts by user into dashboard??? Below I have it showing all posts...find logged in user, display posts by that user...but can't seem to access posts, or reduce it show only the posts from the logged in user
 router.get('/dashboard', async (req, res) => {
   try {
-
-    const postData = await User.findByPk(id,
+    const postData = await User.findAll(
       {
+        where: { id: req.session.user_id },
         attributes: { exclude: ['password'] },
         include: [{
-          model: Post,
-          include: {
-            model: User, attributes:
-              ['user_name']
-          }
-        },
-        ]
+          model: Post, attributes: ['post_date_created', 'id']
+        }],
       });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-
+    console.log(posts)
 
     res.render('dashboard', {
       posts,
@@ -104,6 +101,11 @@ router.get('/dashboard', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// // Simple display dashboard route for testing
+// router.get('/dashboard', (req, res) => {
+//   res.render('dashboard');
+// });
 
 
 
@@ -132,6 +134,30 @@ router.get('/login', (req, res) => {
 
 
 
+// Test route to return all posts that a user created
+router.get('/createdposts/:id', async (req, res) => {
+  try {
+      if (!req.body.user_id) {
+          const posts = await User.findByPk(req.session.user_id, {
+              attributes: { exclude: ['password'] },
+              include: [
+                  { model: Post }
+              ]
+          });
+          res.status(200).json(posts);
+      } else {
+          const posts = await User.findByPk(req.body.user_id, {
+              attributes: { exclude: ['password'] },
+              include: [
+                  { model: Post }
+              ]
+          });
+          res.status(200).json(posts);
+      }
+  } catch (err) {
+      res.status(501).json(err);
+  }
+});
 
 
 
