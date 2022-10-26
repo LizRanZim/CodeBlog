@@ -23,18 +23,17 @@ const signupFormHandler = async (event) => {
       if (response.ok) {
        
           // Sends login data to the back end to attempt to login
-          const response = await fetch('/api/users/', {
+          const response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-          document.location.replace('/');
-        } else {
-          alert('Failed to log in');
-        }
-      } else {
-        alert('Failed to signup');
+            document.location.replace('/');
+          } else {
+            alert('Failed to log in');
+          }
+            
       }
     }
   };
