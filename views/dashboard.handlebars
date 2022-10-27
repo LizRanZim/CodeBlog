@@ -3,16 +3,16 @@
 
 {{#each posts as |post| }}
 
-<h1 class="title">Welcome {{user_name}}</h1>
+<h1 class="title">Welcome {{post.user.user_name}}</h1>
 
 <div class="row align-center mb-5">
     <div class="col-md-9">
         <h1 class="title">Your Posts</h1>
         <a href="/posts/{{post.id}}">
-         <h1 class="title is-4 has-text-link">{{post.post_name}}</h1>
+         <h1 class="title is-4 has-text-link">{{post_name}}</h1>
         </a>
         <p>{{post.post_description}}</p>
-        <h5>Created by: {{user_name}}</h5>
+        <h5>Created by: {{post.user.user_name}}</h5>
         <h6>Created on {{format_date post.post_date_created}}</h6>
         <h6>User Id: {{id}}</h6>
 

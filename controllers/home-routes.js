@@ -79,12 +79,12 @@ router.get('/posts/:id', async (req, res) => {
 // how do i pull posts by user into dashboard??? Below I have it showing all posts...find logged in user, display posts by that user...but can't seem to access posts, or reduce it show only the posts from the logged in user
 router.get('/dashboard', async (req, res) => {
   try {
-    const postData = await User.findAll(
+    const postData = await Post.findAll(
       {
         where: { id: req.session.user_id },
         attributes: { exclude: ['password'] },
         include: [{
-          model: Post, attributes: ['post_date_created', 'id']
+          model: User, 
         }],
       });
 
@@ -92,7 +92,7 @@ router.get('/dashboard', async (req, res) => {
     console.log(posts)
 
     res.render('dashboard', {
-      posts,
+      posts: posts,
       // Setting the list of posts
       logged_in: req.session.logged_in,
     });
