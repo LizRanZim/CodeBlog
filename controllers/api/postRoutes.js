@@ -31,4 +31,21 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Delete a post by id
+
+router.delete('/:id', async (req, res) => {
+
+  try {
+    const posts = await Post.destroy ({
+      where: {
+        id: req.params.id
+      }
+    })
+
+res.status(200).json(posts);
+  } catch (err) {
+    res.status(502).json(err);
+  }
+});
+
 module.exports = router;
