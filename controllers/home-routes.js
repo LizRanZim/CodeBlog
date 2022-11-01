@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       order: [['id', 'ASC']],
+      include: [{ model: User }],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
