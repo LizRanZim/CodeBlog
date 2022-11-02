@@ -63,7 +63,7 @@ router.get('/posts/:id', async (req, res) => {
     );
 
     const onePost = postData.get({ plain: true });
-    console.log(onePost)
+    console.log(onePost, 'OnePost')
 
     res.render('post', { onePost, logged_in: req.session.logged_in });
   } catch (err) {
@@ -119,6 +119,14 @@ router.get('/login', (req, res) => {
 
 
 // Route to add a post (needs with withAuth)
+router.get('/make-post', async (req, res) => {
+ try {
+  res.render ('make-post', { logged_in: req.session.logged_in})
+
+ } catch (err) {
+      res.status(501).json(err);
+  }
+});
 
 
 
@@ -135,7 +143,7 @@ router.get('/login', (req, res) => {
 
 
 
-// Test route to return all posts that a user created
+// Test route to return all posts that a user created ****not working
 router.get('/createdposts/:id', async (req, res) => {
   try {
       if (!req.body.user_id) {

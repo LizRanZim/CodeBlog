@@ -1,56 +1,24 @@
 {{!-- Start this from scratch, what do you want to show here... --}}
 
 <div class="row align-center mb-5">
-  <div class="col-md-9">
-    <h3>{{onePost.post_name}}</h3>
+  <div class="column">
+    <h1 class="title is-4 has-text-link">{{onePost.post_name}}</h1>
     <p>{{onePost.post_description}}</p>
-    <h5>Written by {{onePost.user_name}}</h5>
-    <h6>Post Created on {{format_date onePost.post_date_created}}</h6>
+    <h5>Created by: {{onePost.user.user_name}}</h5>
+    <h6>Created on {{format_date onePost.post_date_created}}</h6>
     <h6>Post Id: {{onePost.id}}</h6>
-
-    {{!-- {{#each onePost.comments as |blogComment| }}
-    <div class="row align-center mb-5">
-      <div class="col-md-9">
-
-        <h3>{{onePost.post_name}}</h3>
-        <p>{{onePost.post_description}}</p>
-        <h5>Written by {{onePost.user_name}}</h5>
-        <h6>Post Created on {{format_date onePost.post_date_created}}</h6>
-        <h6>Post Id: {{onePost.id}}</h6>
-        {{/each}}
-
-        {{#each onePost.comments as |blogComment| }}
-        <div class="row align-center mb-5">
-          <div class="col-md-9">
-
-            <h4>Comments:</h4>
-            <p>{{blogComment.comment}}</p>
-            <h6>Comment created on {{format_date blogComment.comment_date_created}}</h6>
-          </div>
-        </div>
-        {{/each}} --}}
+</div>
+  </div>
 
 
+<div class="row align-center mb-5">
+  <div class="column">
+     <h2>Leave a Comment:</h2>
+     <textarea class="textarea is-danger" placeholder="Type Your Comment Here" id="comment_text"></textarea>
+
+    <button class="button is-danger m-3" id="save-comment-btn">Save Comment</button>
+  </div>
+</div>
 
 
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h3>Leave a Comment:</h3>
-          
-            <form class="form new-project-form">
-              <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea class="form-input" id="comment-text" name="comment-text"></textarea>
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="comment-btn">Create</button>
-
-              </div>
-            </form>
-            <h4> Refresh the page to see your comment!</h4>
-          </div>
-          {{!-- comment text box and submit button to go here --}}
-
-        </div>
-      </div>
-      <script src="/js/makeComment.js"></script>
+  <script src="/js/makeComment.js"></script>
