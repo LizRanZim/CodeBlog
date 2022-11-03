@@ -6,14 +6,10 @@ const signupFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
   
   
-    // const response = await fetch('/api/users/signup', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ user_name, email, password }),
-    //   headers: { 'Content-Type': 'application/json' },
-    // }).then(response => console.log(response))
   
+  // checks to see if user, email, and password entered
     if (user_name && email && password) {
-      const response = await fetch('/api/users', {//I'm getting response.ok == true with this value but it's not logging me in, but it is adding the user to the db via insomnia
+      const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ user_name, email, password }),
         headers: { 'Content-Type': 'application/json' },

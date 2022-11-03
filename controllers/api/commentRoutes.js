@@ -3,6 +3,7 @@ const { Post, User, Comment } = require('../../models');
 
 // Endpoint for /api/comments
 
+//create a comment
 router.post('/', async (req, res) => {
     try {
       const newComment = await Comment.create({
@@ -22,7 +23,7 @@ router.post('/', async (req, res) => {
 //     try {
 //         if (!req.body.user_id) {
 //             const newComment = await Comment.create({
-//                 conment_text: req.body.content,
+//                 comment_text: req.body.content,
 //                 user_id: req.session.user_id,
 //                 post_id: req.body.post_id
 //             });
@@ -50,6 +51,23 @@ router.get('/', async (req, res) => {
       res.status(200).json(comments);
   } catch (err) {
       res.status(501).json(err);
+  }
+});
+
+// Delete a comment by id
+
+router.delete('/:id', async (req, res) => {
+
+  try {
+    const comments = await Comment.destroy ({
+      where: {
+        id: req.params.id
+      }
+    })
+
+res.status(200).json(comments);
+  } catch (err) {
+    res.status(502).json(err);
   }
 });
 
