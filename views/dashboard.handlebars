@@ -1,9 +1,11 @@
 
 <button class="button is-danger m-3" id="make-post">Create Post</button>
 
+<h1 class="title">Welcome {{posts.user.user_name}}</h1>
+
 {{#each posts as |post| }}
 
-<h1 class="title">Welcome {{post.user.user_name}}</h1>
+{{!-- <h1 class="title">Welcome {{post.user.user_name}}</h1> --}}
 
 <div class="row align-center mb-5">
     <div class="col-md-9">

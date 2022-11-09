@@ -82,7 +82,7 @@ router.get('/dashboard', async (req, res) => {
   try {
     const postData = await Post.findAll(
       {
-        where: { id: req.session.user_id },
+        where: { user_id: req.session.user_id },
         attributes: { exclude: ['password'] },
         include: [{
           model: User, 
