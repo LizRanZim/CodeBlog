@@ -1,7 +1,7 @@
 
 <button class="button is-danger m-3" id="make-post">Create Post</button>
 
-<h1 class="title">Welcome {{posts.user.user_name}}</h1>
+<h1 class="title">Welcome {{posts.0.user.user_name}}</h1>
 
 {{#each posts as |post| }}
 
@@ -9,8 +9,7 @@
 
 <div class="row align-center mb-5">
     <div class="col-md-9">
-        <h1 class="title">Your Posts</h1>
-        <a href="/posts/{{post.id}}">
+       <a href="/posts/{{post.id}}">
          <h1 class="title is-4 has-text-link">{{post_name}}</h1>
         </a>
         <p>{{post.post_description}}</p>

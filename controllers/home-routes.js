@@ -132,17 +132,6 @@ router.get('/make-post', async (req, res) => {
 
 
 
-
-// Route to edit a post (needs with withAuth)
-
-
-
-
-
-// Route to add a comment (needs with withAuth)
-
-
-
 // Test route to return all posts that a user created ****not working
 router.get('/createdposts/:id', async (req, res) => {
   try {
