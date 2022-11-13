@@ -129,6 +129,28 @@ router.get('/make-post', async (req, res) => {
 });
 
 
+// Route to edit a post by id
+
+// router.put('/:id', async (req, res) => {
+//   // If the user is not logged in, redirect the user to the login page
+//   try {
+//     const postData = await Post.findByPk(
+//       req.params.id,
+//       { include: [{ model: User }, { model: Comment }] }
+//     );
+
+//     const onePost = postData.get({ plain: true });
+//     console.log(onePost, 'OnePost')
+
+//     res.render('edit-post', { onePost, logged_in: req.session.logged_in });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
+
 
 
 

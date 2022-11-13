@@ -7,6 +7,7 @@
     <h5>Created by: {{onePost.user.user_name}}</h5>
     <h6>Created on {{format_date onePost.post_date_created}}</h6>
     <h6>Post Id: {{onePost.id}}</h6>
+    <button class="button is-danger m-3" id="edit-post-btn" data-postid={{onePost.id}}>Edit Post</button>
 </div>
   </div>
 
@@ -35,7 +36,8 @@
 </div>
 
 
-  {{!-- <script src="/js/makeComment.js"></script> --}}
+
+{{!-- event handler for make comment & edit post --}}
 
   <script>
     const makeCommentFormHandler = async (event) => {
@@ -63,8 +65,20 @@ console.log(postId, '/n-------- POST ID')
 }
 };
 
-document
-  .querySelector('#save-comment-btn')
+// event handler for edit post
+const editPostButtonHandler = async (event) => {
+    event.preventDefault();
+    document.location.replace('/edit-post/1');
+};
+
+   
+
+document.querySelector('#save-comment-btn')
   .addEventListener('click', makeCommentFormHandler);
+
+document.querySelector('#edit-post-btn')
+  .addEventListener('click', editPostButtonHandler);
+
+
 
   </script>
