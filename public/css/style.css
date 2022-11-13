@@ -29,3 +29,12 @@ h6 {
   font-size: 75%;
   font-weight: lighter;
 }
+
+/* DISPLAY */
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
+}

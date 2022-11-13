@@ -16,10 +16,26 @@
         <h5>Created by: {{post.user.user_name}}</h5>
         <h6>Created on {{format_date post.post_date_created}}</h6>
         <h6>User Id: {{id}}</h6>
+        <h6>Post Id: {{post.id}}</h6>
 
-          <button class="button is-danger m-3" id="delete-post-btn" data-id={{post.id}}>Delete Post</button>
+        <button class="button is-danger m-3" id="delete-post-btn" data-id={{post.id}}>Delete Post</button>
+
+        <button class="button is-danger m-3" id="edit-post-btn" data-id={{post.id}}>Edit Post</button>
 
     </div>
+<div class="row align-center mb-5 edit-post-option display-none">
+  <div class="column">
+   
+    <p>Edit Post Title:</p>
+    <textarea class="input is-danger m-3" type="text" id="post-name">{{post_name}}</textarea>
+    <p>Edit Post Content:</p>
+    <textarea class="textarea is-danger m-3" id="post-description"> {{post_description}}</textarea>
+
+    <button class="button is-danger m-3" id="save-post-btn" data-id={{post.id}}>Save Edited Post</button>
+    
+  </div>
+</div>
+
 </div>
 {{/each}}
 
@@ -28,28 +44,46 @@
 
 
 <script>
-    // delete post button handler from 14-28 profile.js
-    const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-      });
-      console.log(`/api/posts/${id}`);
 
-      if (response.ok) {
-       
-        document.location.replace(`/edit-post/$
-        {id}`);
-      } else {
-        alert('Failed to delete post');
-      }
-    }
+
+
+//Code from 11-02 Challenge
+
+const renderActiveNote = () => {
+  hide(saveNoteBtn);
+
+  if (activeNote.id) {
+    noteTitle.setAttribute('readonly', true);
+    noteText.setAttribute('readonly', true);
+    noteTitle.value = activeNote.title;
+    noteText.value = activeNote.text;
+  } else {
+    noteTitle.removeAttribute('readonly');
+    noteText.removeAttribute('readonly');
+    noteTitle.value = '';
+    noteText.value = '';
+  }
+};
+
+const handleNoteSave = () => {
+  const newNote = {
+    title: noteTitle.value,
+    text: noteText.value,
   };
+  saveNote(newNote).then(() => {
+    getAndRenderNotes();
+    renderActiveNote();
+  });
+};
 
-document
-    .querySelector('#delete-post-btn')
-    .addEventListener('click', delButtonHandler);
+// Show an element
+const show = (elem) => {
+  elem.style.display = 'inline';
+};
+
+// Hide an element
+const hide = (elem) => {
+  elem.style.display = 'none';
+};
 
 </script>
