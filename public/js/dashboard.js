@@ -9,8 +9,11 @@ const addPostButtonHandler = async (event) => {
 
 // delete post button handler from 14-28 profile.js
 const delButtonHandler = async (event) => {
+  console.log('******')
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
+
+    console.log(`/api/posts/${id}`);
 
     const response = await fetch(`/api/posts/${id}`, {
       method: 'DELETE',
@@ -23,7 +26,10 @@ const delButtonHandler = async (event) => {
     } else {
       alert('Failed to delete post');
     }
-  }
+  } else
+ {
+console.log('******')
+ }
 };
 
 // Idea is to hide the edit post functionality until someone clicks the edit post button and then they can edit and save the post from here. But this probably needs to move to the dashboard instead from the post handlebars
@@ -45,7 +51,7 @@ const editPostButtonHandler = async (event) => {
 // delete button event listener
 
 document
-  .querySelector('#delete-post-btn')
+  .querySelector('.delete-post-btn')
   .addEventListener('click', delButtonHandler);
 
 
