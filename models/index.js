@@ -17,7 +17,7 @@ User.hasMany(Post, {
 // A Comment belongs to a User
 Comment.belongsTo(User, {
   foreignKey: 'user_id',
-  //  constraints: false
+   constraints: false
 });
 
 // A User has many Comments
@@ -29,13 +29,13 @@ User.hasMany(Comment, {
 // A Comment belongs to a Post
 Comment.belongsTo(Post, {
   foreignKey: 'post_id',
-  // constraints: false
+  constraints: false
 });
 
 // A Post has many Comments
 Post.hasMany(Comment, {
   foreignKey: 'post_id',
-  // constraints: false
+  onDelete: 'CASCADE',
 });
 
 

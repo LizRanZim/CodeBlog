@@ -40,12 +40,12 @@ console.log('******')
 const editPostButtonHandler = async (event) => {
   event.preventDefault();
     // remove the class that hides the element
-    document.querySelector('#edit-post-option')
+    document.querySelector('.edit-post-option')
     // ***getting an error here
     .classList.remove('display-none');
 
   
-  document.location.replace('/dashboard');
+  // document.location.replace('/dashboard');
   };
 
 // delete button event listener
