@@ -36,17 +36,57 @@ console.log('******')
 
 
 
-// event handler for edit post
+// event handler for edit post to unhide the edit area
 const editPostButtonHandler = async (event) => {
   event.preventDefault();
     // remove the class that hides the element
     document.querySelector('.edit-post-option')
-    // ***getting an error here
     .classList.remove('display-none');
-
-  
-  // document.location.replace('/dashboard');
   };
+
+
+// event handler to save edited post button
+const saveEditedPostFormHandler = async (event) => {
+    event.preventDefault();
+
+    const post_id = event.target.getAttribute('data-id');
+    const post_name = document.querySelector('#post-name').value.trim();
+
+    const post_description = document.querySelector('#post-description').value.trim();
+
+
+    // if post-text exists
+    if (post_name && post_description) {
+        const postBody = {
+            post_name: post_name,
+            post_description: post_description,
+            post_id: post_id
+        }
+
+        const response = await fetch('../api/posts', {
+            method: 'POST',
+            body: JSON.stringify(postBody),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response)
+
+        if (response.ok) {
+            console.log(response);
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to edit post');
+        }
+    }
+};
+
+
+
+// save edited post event listener
+
+document
+    .querySelector('#save-post-btn')
+    .addEventListener('click', saveEditedPostFormHandler);
+
 
 // delete button event listener
 
@@ -61,7 +101,7 @@ document
   .querySelector('#make-post')
   .addEventListener('click', addPostButtonHandler);
 
-  // edit button event listener
+  // edit post button event listener
 document
 .querySelector('#edit-post-btn')
 .addEventListener('click', editPostButtonHandler);
