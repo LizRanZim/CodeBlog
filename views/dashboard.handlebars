@@ -15,16 +15,16 @@
         <p>{{post.post_description}}</p>
         <h5>Created by: {{post.user.user_name}}</h5>
         <h6>Created on {{format_date post.post_date_created}}</h6>
-        <h6>User Id: {{id}}</h6>
+        <h6>User Id: {{post.user.id}}</h6>
         <h6>Post Id: {{post.id}}</h6>
 
         <button class="button is-danger m-3 delete-post-btn" data-id={{post.id}}>Delete Post</button>
 
-        <button class="button is-danger m-3" id="edit-post-btn" data-id={{post.id}}>Edit Post</button>
+        <button class="button is-danger m-3 edit-post-btn" data-id={{post.id}}>Edit Post</button>
 
     </div>
-<div class="row align-center mb-5 edit-post-option display-none">
-  <div class="column">
+<div class="row align-center mb-5 edit-post-option display-none" id={{post.id}}>
+  <div class="column" id="test">
    
     <p>Edit Post Title:</p>
     <textarea class="input is-danger m-3" type="text" id="post-name">{{post_name}}</textarea>
