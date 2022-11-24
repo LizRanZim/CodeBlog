@@ -1,5 +1,7 @@
 // add post button handler
 
+// add conditional logic so that if no post then no event listener, add event listener when post exists, try comment out and save 
+
 
 const addPostButtonHandler = async (event) => {
   event.preventDefault();
@@ -67,7 +69,7 @@ const saveEditedPostFormHandler = async (event) => {
     }
 
     const response = await fetch(`../api/posts/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(postBody),
       headers: { 'Content-Type': 'application/json' },
     });

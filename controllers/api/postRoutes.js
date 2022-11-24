@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
 
 // Route to update a post (needs with withAuth)
 router.put('/:id', async (req, res) => {
+  console.log(req)
   try {
     const newPost = await Post.update(req.body,{
       where: {
