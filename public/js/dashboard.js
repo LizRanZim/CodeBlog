@@ -35,7 +35,7 @@ const delButtonHandler = async (event) => {
 
 // Idea is to hide the edit post functionality until someone clicks the edit post button and then they can edit and save the post from here. But this probably needs to move to the dashboard instead from the post handlebars
 
-
+// ****When I try to create a post and then edit it, it's not passing the id of the newly created post to allow it to be edited, and it's not allowing anything but the first post to be edited, some issue with the proper id being passed. ***
 
 // event handler for edit post to unhide the edit area
 const editPostButtonHandler = (event) => {
@@ -91,11 +91,17 @@ const testFunction = async (event) => {
 };
 
 
-// save edited post event listener
+// save post event listener
 
-document
-  .querySelector('#save-post-btn')
-  .addEventListener('click', saveEditedPostFormHandler);
+const savPostBtn = document.querySelectorAll('.save-post-btn');
+if (savPostBtn) { savPostBtn.forEach(e => e.addEventListener('click', saveEditedPostFormHandler));
+};
+
+
+
+// document
+//   .querySelector('#save-post-btn')
+//   .addEventListener('click', saveEditedPostFormHandler);
 
 
 // delete button event listener
@@ -104,13 +110,17 @@ document
 //   .querySelector('.delete-post-btn')
 //   .addEventListener('click', delButtonHandler);
 
-document.querySelectorAll('.delete-post-btn').forEach(e => e.addEventListener('click', delButtonHandler));
+// document.querySelectorAll('.delete-post-btn').forEach(e => e.addEventListener('click', delButtonHandler));
+
+const deletePostBtn = document.querySelectorAll('.delete-post-btn');
+if (deletePostBtn) {
+  deletePostBtn.forEach(e => e.addEventListener('click', delButtonHandler));
+};
 
 
-
-document
-  .querySelector('#test')
-  .addEventListener('click', testFunction);
+// document
+//   .querySelector('#test')
+//   .addEventListener('click', testFunction);
 
 // add button event listener
 
@@ -119,5 +129,10 @@ document
   .addEventListener('click', addPostButtonHandler);
 
 // edit post button event listener
-document
-  .querySelectorAll('.edit-post-btn').forEach(e => e.addEventListener('click', editPostButtonHandler));
+// document
+//   .querySelectorAll('.edit-post-btn').forEach(e => e.addEventListener('click', editPostButtonHandler));
+
+const editPostBtn = document.querySelectorAll('.edit-post-btn');
+if (editPostBtn) {
+  editPostBtn.forEach(e => e.addEventListener('click', editPostButtonHandler));
+};
