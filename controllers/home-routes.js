@@ -78,7 +78,7 @@ router.get('/posts/:id', async (req, res) => {
 // Route to display dashboard (needs with withAuth)
 
 // how do i pull posts by user into dashboard??? Below I have it showing all posts...find logged in user, display posts by that user...but can't seem to access posts, or reduce it show only the posts from the logged in user
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll(
       {

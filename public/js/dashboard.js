@@ -15,12 +15,12 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    console.log(`/api/posts/${id}`);
+    // console.log(`/api/posts/${id}`);
 
     const response = await fetch(`/api/posts/${id}`, {
       method: 'DELETE',
     });
-    console.log(`/api/posts/${id}`);
+    // console.log(`/api/posts/${id}`);
 
     if (response.ok) {
 
@@ -29,7 +29,7 @@ const delButtonHandler = async (event) => {
       alert('Failed to delete post');
     }
   } else {
-    console.log('******')
+    // console.log('******')
   }
 };
 
@@ -49,7 +49,7 @@ const editPostButtonHandler = (event) => {
 
 
 // event handler to save edited post button
-// ****this is creating a new post instead of saving the edited post
+
 const saveEditedPostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -73,10 +73,10 @@ const saveEditedPostFormHandler = async (event) => {
       body: JSON.stringify(postBody),
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(postBody)
+    console.log(id)
 
     if (response.ok) {
-      console.log(response);
+      // console.log(response);
       document.location.replace('/dashboard');
     } else {
       alert('Failed to edit post');
@@ -85,10 +85,10 @@ const saveEditedPostFormHandler = async (event) => {
 
 };
 
-const testFunction = async (event) => {
-  event.preventDefault();
-  console.log(event.target);
-};
+// const testFunction = async (event) => {
+//   event.preventDefault();
+//   // console.log(event.target);
+// };
 
 
 // save post event listener
